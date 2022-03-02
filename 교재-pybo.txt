@@ -1,0 +1,9 @@
+질문 / 답변 게시판
+    Question
+        - 제목
+        - 내용
+        - 작성일
+    Answer
+        - 내용
+        - 작성일
+        - Question : Foreign Key 설정
