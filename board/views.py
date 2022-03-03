@@ -1,8 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
-from board.forms import QuestionForm
+from board.forms import QuestionForm, AnswerForm
 from board.models import Question
 
 
@@ -17,9 +17,10 @@ def index(request):
 
 # 상세 페이지
 def detail(request, question_id):
-    question = Question.objects.get(id=question_id)
-    return render(request, 'board/detail.html',
-                  {'question': question})
+    # question = Question.objects.get(id=question_id)
+    question = get_object_or_404(Question, pk=question_id)  # url 경로 오류 처리
+    context = {'question': question}
+    return render(request, 'board/detail.html', context)
 
 
 # 질문 등록 페이지
@@ -33,4 +34,23 @@ def question_create(request):
             return redirect('board:index')  # 저장 후 질문 목록 페이지로 이동
     else:  # request.method == 'GET':
         form = QuestionForm()  # 질문 등록 폼 객체 생성(내용 비어 있는 폼)
-    return render(request, 'board/question_form.html', {'form': form})
+    context = {'form': form}
+    return render(request, 'board/question_form.html', context)
+
+
+# 답변 등록
+def answer_create(request, question_id):
+    # question = Question.objects.get(id=question_id)
+    question = get_object_or_404(Question, pk=question_id)
+    if request.method == 'POST':
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            answer = form.save(commit=False)
+            answer.create_date = timezone.now()
+            answer.question = question
+            answer.save()
+            return redirect('board:detail', question_id=question_id)
+    else:
+        form = AnswerForm()
+    context = {'form': form}
+    return render(request, 'board/detail.html', context)
