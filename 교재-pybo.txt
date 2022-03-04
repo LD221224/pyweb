@@ -7,3 +7,11 @@
         - 내용
         - 작성일
         - Question : Foreign Key 설정
+
+장고 회원 관리
+    common 앱 생성 - python .\manage.py startapp common
+
+함수형 뷰 방식 - FBV(Function Based View)
+    def 함수명
+클래스형 뷰 방식 - CBV(Class Based View)
+    클래스 제공됨

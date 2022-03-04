@@ -52,5 +52,5 @@ def answer_create(request, question_id):
             return redirect('board:detail', question_id=question_id)
     else:
         form = AnswerForm()
-    context = {'form': form}
+    context = {'question': question, 'form': form}
     return render(request, 'board/detail.html', context)

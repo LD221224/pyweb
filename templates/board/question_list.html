@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>질문 목록</title>
-    <link rel="stylesheet" href="{% static 'board/css/bootstrap.css/' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+    질문/답변 목록
+{% endblock %}
+
+{% block content %}
     <div class="container my-3">
         <table class="table">
             <thead class="thead-dark">
@@ -19,7 +17,7 @@
                     {% for question in question_list %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td><a href="board/{{ question.id }}/">{{ question.subject }}</a></td>
+                        <td><a href="/board/{{ question.id }}/">{{ question.subject }}</a></td>
                         <td>{{ question.create_date }}</td>
                     </tr>
                     {% endfor %}
@@ -30,7 +28,7 @@
         </table>
         <a class="btn btn-primary" href="{% url 'board:question_create' %}">질문 등록</a>
     </div>
-
+{% endblock %}
         <!-- 부트스트랩 적용 전
         <h1>질문 목록입니다.</h1>
         {% if question_list %}
@@ -38,7 +36,7 @@
             {% for question in question_list %}
             <li>
                 <a href="{% url 'board:detail' question.id %}">{{ question.subject }}</a>
-                <a href="board/{{ question.id }}/">{{ question.subject }}</a>
+                <a href="/board/{{ question.id }}/">{{ question.subject }}</a>
             </li>
             {% endfor %}
         </ul>
@@ -47,5 +45,3 @@
         {% endif %}
         <a href="{% url 'board:question_create' %}">질문 등록</a>
         -->
-</body>
-</html>
