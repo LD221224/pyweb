@@ -11,11 +11,25 @@
             <div class="card-body">
                 <div class="card-text" style="white-space:pre-line">{{ question.content }}</div>
                 <div class="d-flex justify-content-end">
+                    <!-- 질문 수정일 -->
+                    {% if question.modify_date %}
+                    <div class="badge badge-light p-2 mx-3 text-left">
+                        <div class="mb-2">modified at</div>
+                        <div>{{ question.modify_date }}</div>
+                    </div>
+                    {% endif %}
+                    <!-- 질문 글쓴이, 작성일 -->
                     <div class="badge badge-light p-2 text-left">
                         <div class="mb-2">{{ question.author }}</div>
                         <div>{{ question.create_date }}</div>
                     </div>
                 </div>
+                <!-- 질문 수정, 삭제 버튼 -->
+                {% if request.user == question.author %}
+                <div>
+                    <a href="{% url 'board:question_modify' question.id %}" class="btn btn-outline-secondary">수정</a>
+                </div>
+                {% endif %}
             </div>
         </div>
         <h5 class="border-bottom my-3 py-2">
