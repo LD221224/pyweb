@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
@@ -24,12 +25,14 @@ def detail(request, question_id):
 
 
 # 질문 등록 페이지
+@login_required(login_url='common:login')
 def question_create(request):
     if request.method == 'POST':
         form = QuestionForm(request.POST)  # 내용 작성된 폼
         if form.is_valid():
             question = form.save(commit=False)  # 가저장 : create_date 없음
-            question.create_date = timezone.now()
+            question.create_date = timezone.now()  # 작성일
+            question.author = request.user  # 글쓴이 : 인증된 사용자
             question.save()  # 실제 저장
             return redirect('board:index')  # 저장 후 질문 목록 페이지로 이동
     else:  # request.method == 'GET':
@@ -39,6 +42,7 @@ def question_create(request):
 
 
 # 답변 등록
+@login_required(login_url='common:login')
 def answer_create(request, question_id):
     # question = Question.objects.get(id=question_id)
     question = get_object_or_404(Question, pk=question_id)
@@ -47,6 +51,7 @@ def answer_create(request, question_id):
         if form.is_valid():
             answer = form.save(commit=False)
             answer.create_date = timezone.now()
+            answer.author = request.user
             answer.question = question
             answer.save()
             return redirect('board:detail', question_id=question_id)

@@ -3,10 +3,12 @@
         - 제목
         - 내용
         - 작성일
+        - author : Foreign Key 설정
     Answer
         - 내용
         - 작성일
         - Question : Foreign Key 설정
+        - author : Foreign Key 설정
 
 장고 회원 관리
     common 앱 생성 - python .\manage.py startapp common
