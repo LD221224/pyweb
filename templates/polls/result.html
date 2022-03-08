@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    설문조사 결과
+{% endblock %}
+
+{% block content %}
+    <div class="container my-3">
+        <section>
+            <h2 class="border-bottom py-2">{{ question.question_text }}</h2>
+            <ul class="list-group">
+                {% for choice in question.choice_set.all %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ choice.choice_text }}<h5><span class="badge badge-primary">{{ choice.votes }}votes</span></h5>
+                </li>
+                {% endfor %}
+            </ul>
+        <button type="button" class="btn btn-primary mt-5" onclick="location.href='/polls/'">설문 목록</button>
+        </section>
+    </div>
+{% endblock %}

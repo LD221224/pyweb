@@ -15,6 +15,12 @@
                         <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
                     {% endif %}
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'board:boardlist' %}">질문/답변</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'polls:index' %}">설문조사</a>
+                </li>
             </div>
         </div>
     </div>

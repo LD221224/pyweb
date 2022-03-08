@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    설문조사
+{% endblock %}
+
+{% block content %}
+    <div class="container my-3">
+        <section>
+            <form action="{% url 'polls:vote' question.id %}" method="post">
+                {% csrf_token %}    <!-- 필수 입력 사항 -->
+                <div class="form-group">
+                    <h2 class="border-bottom py-2">{{ question.question_text }}</h2>
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endif%}
+                    {% for choice in question.choice_set.all %}
+                    <div class="form-check form-control-lg">
+                        <input type="radio" name="choice" value="{{ choice.id }}" class="form-check-input">
+                        <label class="form-check-label">{{ choice.choice_text }}</label>
+                    </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary mt-2">투표</button>
+                    <button type="button" class="btn btn-secondary mt-2 ml-2" onclick="location.href='/polls/'">설문 목록</button>
+                </div>
+            </form>
+        </section>
+    </div>
+{% endblock %}
