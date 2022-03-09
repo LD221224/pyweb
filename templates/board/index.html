@@ -6,11 +6,12 @@
 {% block content %}
 {% load static %}
 <div class="container my-3">
-    <div class="jumbotron">
-        <h1 class="display-4">Welcome PyWeb!!</h1>
+    <div class="jumbotron py-5">
+        <h1 class="display-4 text-primary font-weight-bold">Welcome PyWeb!!</h1>
         <hr class="my-4">
-        <p>안녕하세요. Pyweb 사이트 입니다.</p>
-        <p>이 사이트는 질문/답변, 설문조사 게시판으로 구성되어있습니다.</p>
+        <p>안녕하세요. Pyweb 사이트 입니다. 이 사이트는 <span class="text-success">질문/답변</span>, <span class="text-danger">설문조사</span> 게시판으로 구성되어있습니다.</p>
+        <a class="btn btn-outline-success mr-3" href="{% url 'board:boardlist' %}" role="button">질문/답변</a>
+        <a class="btn btn-outline-danger" href="{% url 'polls:index' %}" role="button">설문조사</a>
     </div>
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
