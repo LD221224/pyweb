@@ -15,7 +15,7 @@ def index(request):
     # return HttpResponse("<h1>안녕~ Django!!</h1>")
 
 
-@login_required(login_url='common:login')
+@login_required(login_url='common:login_view')
 def detail(request, pk):
     # 자료 1개 가져오기
     question = Question.objects.get(id=pk)
