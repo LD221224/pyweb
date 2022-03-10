@@ -15,7 +15,7 @@
                 </li>
                 {% endfor %}
             </ul>
-        <button type="button" class="btn btn-primary mt-5" onclick="location.href='/polls/'">설문 목록</button>
+            <a class="btn btn-secondary mt-2" href="{% url 'polls:index' %}" role="button">설문 목록</a>
         </section>
     </div>
 {% endblock %}

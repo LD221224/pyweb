@@ -21,7 +21,7 @@
                     </div>
                     {% endfor %}
                     <button type="submit" class="btn btn-primary mt-2">투표</button>
-                    <button type="button" class="btn btn-secondary mt-2 ml-2" onclick="location.href='/polls/'">설문 목록</button>
+                    <a class="btn btn-secondary mt-2 ml-2" href="{% url 'polls:index' %}" role="button">설문 목록</a>
                 </div>
             </form>
         </section>
