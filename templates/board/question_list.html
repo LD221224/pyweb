@@ -24,7 +24,8 @@
                         <td>{{ forloop.counter|add:3 }}</td>
                         -->
                         <td class="text-left px-3">
-                            <a href="{% url 'board:detail' question.id %}">{{ question.subject }}</a>
+                            <a class="text-decoration-none text-dark"
+                               href="{% url 'board:detail' question.id %}">{{ question.subject }}</a>
                         </td>
                         <td>{{ question.author }}</td>
                         <td>{{ question.create_date }}</td>

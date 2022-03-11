@@ -17,3 +17,8 @@
     def 함수명
 클래스형 뷰 방식 - CBV(Class Based View)
     클래스 제공됨
+
+리눅스 명령어
+    virtualenv venvs --python=python3.8 : 가상환경 venvs에 설치, 파이썬3.8 설치
+    ls : 파일 목록
+    . 파일이름 : 파일 실행
