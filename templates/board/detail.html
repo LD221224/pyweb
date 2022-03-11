@@ -13,13 +13,13 @@
                 <div class="d-flex justify-content-end">
                     <!-- 질문 수정일 -->
                     {% if question.modify_date %}
-                    <div class="badge badge-light p-2 mx-3 text-left">
+                    <div class="badge badge-light p-2 mx-3 text-dark text-left">
                         <div class="mb-2">modified at</div>
                         <div>{{ question.modify_date }}</div>
                     </div>
                     {% endif %}
                     <!-- 질문 글쓴이, 작성일 -->
-                    <div class="badge badge-light p-2 text-left">
+                    <div class="badge badge-light p-2 text-dark text-left">
                         <div class="mb-2">{{ question.author }}</div>
                         <div>{{ question.create_date }}</div>
                     </div>
@@ -51,13 +51,13 @@
                 <div class="d-flex justify-content-end">
                     <!-- 답변 수정일 -->
                     {% if answer.modify_date %}
-                    <div class="badge badge-light p-2 mx-3 text-left">
+                    <div class="badge badge-light p-2 mx-3 text-dark text-left">
                         <div class="mb-2">modified at</div>
                         <div>{{ answer.modify_date }}</div>
                     </div>
                     {% endif %}
                     <!-- 답변 글쓴이, 작성일 -->
-                    <div class="badge badge-light p-2 text-left">
+                    <div class="badge badge-light p-2 text-dark text-left">
                         <div class="mb-2">{{ answer.author }}</div>
                         <div>{{ answer.create_date }}</div>
                     </div>

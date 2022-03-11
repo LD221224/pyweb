@@ -6,14 +6,37 @@
 {% block content %}
 {% load static %}
 <div class="container my-3">
+    <!-- 배경 사진 전환 - 부트스트랩 Carousel 사용 -->
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'board/images/bg0.jpg' %}" class="d-block w-100" alt="배경사진1">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'board/images/bg1.jpg' %}" class="d-block w-100" alt="배경사진2">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'board/images/bg2.jpg' %}" class="d-block w-100" alt="배경사진3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
     <div class="row">
-        <!-- 배경 사진 전환 -->
+        <!-- 배경 사진 전환 - 자바스크립트 작성
         <div class="card mb-4">
             <img id="pic" src="{% static 'board/images/bg0.jpg' %}" alt="배경">
         </div>
-        <div class="col-6">
+        -->
+        <div class="col-6 p-5">
             <h3 class="mt-4">무엇이든 물어보세요</h3>
-            <div class="card" style="width: 25rem;">
+            <div class="card my-3">
                 <div class="card-body">
                     <p>질문/답변 게시판을 사용해 보세요</p>
                     <p>댓글과 추천 기능을 사용해 보세요</p>
@@ -21,25 +44,28 @@
                 </div>
             </div>
             <h3 class="mt-4">설문 투표</h3>
-            <div class="card" style="width: 25rem;">
+            <div class="card">
                 <div class="card-body">
                     <p>설문에 투표해 보세요</p>
                     <a class="btn btn-danger" href="{% url 'polls:index' %}">투표 하기 &rarr;</a>
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-6 p-5">
             <h3 class="mt-4">Question - 최근 질문</h3>
             {% for question in question_list %}
-            <div class="card mb-3" style="width: 25rem;">
-                <div class="card-body">
-                    <div class="card-text">
-                        <div class="text-left">
-                            <a href="{% url 'board:detail' question.id %}">{{ question.subject }}</a>
-                        </div>
-                        <div class="text-center mt-2">
-                            {{ question.author }} (작성일: {{ question.create_date }})
-                        </div>
+            <div class="card my-3">
+                <div class="card-body p-2">
+                    <p>
+                        <a href="{% url 'board:detail' question.id %}"
+                           class="text-dark text-decoration-none">
+                            {{ question.subject }}
+                        </a>
+                    </p>
+                    <div class="card-text text-right">
+                        <span class="badge text-dark">
+                            {{ question.author }}&nbsp; &nbsp;{{ question.create_date }}
+                        </span>
                     </div>
                 </div>
             </div>

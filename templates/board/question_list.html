@@ -10,20 +10,22 @@
     <div class="container my-3">
         <table class="table">
             <thead class="thead-dark">
-                <tr>
+                <tr class="text-center">
                     <th>번호</th><th>제목</th><th>글쓴이</th><th>작성일</th>
                 </tr>
             </thead>
             <tbody>
                 {% if question_list %}
                     {% for question in question_list %}
-                    <tr>
+                    <tr class="text-center">
                         <!-- 번호 = 전체 게시물 수 - 시작 인덱스 - 현재 인덱스 + 1 -->
                         <td>{{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}</td>
                         <!--
                         <td>{{ forloop.counter|add:3 }}</td>
                         -->
-                        <td><a href="{% url 'board:detail' question.id %}">{{ question.subject }}</a></td>
+                        <td class="text-left px-3">
+                            <a href="{% url 'board:detail' question.id %}">{{ question.subject }}</a>
+                        </td>
                         <td>{{ question.author }}</td>
                         <td>{{ question.create_date }}</td>
                     </tr>

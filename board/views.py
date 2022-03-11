@@ -76,7 +76,7 @@ def answer_create(request, question_id):
 
 
 # 질문 수정
-@login_required(login_url='common:login')
+@login_required(login_url='common:login_view')
 def question_modify(request, question_id):
     question = Question.objects.get(id=question_id)  # Question 가져오기
     if request.method == 'POST':
@@ -94,7 +94,7 @@ def question_modify(request, question_id):
 
 
 # 답변 수정
-@login_required(login_url='common:login')
+@login_required(login_url='common:login_view')
 def answer_modify(request, answer_id):
     answer = Answer.objects.get(id=answer_id)
     if request.method == 'POST':
@@ -112,7 +112,7 @@ def answer_modify(request, answer_id):
 
 
 # 질문 삭제
-@login_required(login_url='common:login')
+@login_required(login_url='common:login_view')
 def question_delete(request, question_id):
     question = Question.objects.get(id=question_id)
     question.delete()
@@ -120,7 +120,7 @@ def question_delete(request, question_id):
 
 
 # 답변 삭제
-@login_required(login_url='common:login')
+@login_required(login_url='common:login_view')
 def answer_delete(request, answer_id):
     answer = Answer.objects.get(id=answer_id)
     answer.delete()
