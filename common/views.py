@@ -30,6 +30,12 @@ def signup(request):
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
+
+            # 회원 가입 후 자동 로그인
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
             return redirect('board:index')
     else:
         form = UserForm()

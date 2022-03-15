@@ -8,6 +8,7 @@ from django.utils import timezone
 from board.forms import QuestionForm, AnswerForm
 from board.models import Question, Answer
 
+# 유지보수에 유리하도록 views 패키지 추가 -> board/views/@_views.py 로 분리
 
 # 인덱스 페이지
 def index(request):
@@ -79,7 +80,8 @@ def answer_create(request, question_id):
 # 질문 수정
 @login_required(login_url='common:login_view')
 def question_modify(request, question_id):
-    question = Question.objects.get(id=question_id)  # Question 가져오기
+    # question = Question.objects.get(id=question_id)  # Question 가져오기
+    question = get_object_or_404(Question, pk=question_id)
     if request.method == 'POST':
         form = QuestionForm(request.POST, instance=question)  # 새로 작성한 폼
         if form.is_valid():
@@ -97,7 +99,8 @@ def question_modify(request, question_id):
 # 답변 수정
 @login_required(login_url='common:login_view')
 def answer_modify(request, answer_id):
-    answer = Answer.objects.get(id=answer_id)
+    # answer = Answer.objects.get(id=answer_id)
+    answer = get_object_or_404(Answer, pk=answer_id)
     if request.method == 'POST':
         form = AnswerForm(request.POST, instance=answer)
         if form.is_valid():
@@ -115,7 +118,8 @@ def answer_modify(request, answer_id):
 # 질문 삭제
 @login_required(login_url='common:login_view')
 def question_delete(request, question_id):
-    question = Question.objects.get(id=question_id)
+    # question = Question.objects.get(id=question_id)
+    question = get_object_or_404(Question, pk=question_id)
     question.delete()
     return redirect('board:boardlist')  # 질문 목록
 
@@ -123,7 +127,8 @@ def question_delete(request, question_id):
 # 답변 삭제
 @login_required(login_url='common:login_view')
 def answer_delete(request, answer_id):
-    answer = Answer.objects.get(id=answer_id)
+    # answer = Answer.objects.get(id=answer_id)
+    answer = get_object_or_404(Answer, pk=answer_id)
     answer.delete()
     return redirect('board:detail', question_id=answer.question.id)  # 상세 페이지
 
@@ -131,7 +136,8 @@ def answer_delete(request, answer_id):
 # 질문 추천
 @login_required(login_url='common:login_view')
 def vote_question(request, question_id):
-    question = Question.objects.get(id=question_id)
+    # question = Question.objects.get(id=question_id)
+    question = get_object_or_404(Question, pk=question_id)
     if request.user == question.author:
         messages.error(request, "본인이 작성한 글은 추천할 수 없습니다.")
     else:

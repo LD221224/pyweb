@@ -34,7 +34,7 @@
             <img id="pic" src="{% static 'board/images/bg0.jpg' %}" alt="배경">
         </div>
         -->
-        <div class="col-6 p-5">
+        <div class="col-6 my-3 px-5">
             <h3 class="mt-4">무엇이든 물어보세요</h3>
             <div class="card my-3">
                 <div class="card-body">
@@ -51,11 +51,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-6 p-5">
+        <div class="col-6 my-3 px-5">
             <h3 class="mt-4">Question - 최근 질문</h3>
             {% for question in question_list %}
             <div class="card my-3">
-                <div class="card-body p-2">
+                <div class="card-body">
                     <p>
                         <a href="{% url 'board:detail' question.id %}"
                            class="text-dark text-decoration-none">

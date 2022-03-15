@@ -1,28 +1,29 @@
 from django.urls import path
-
-from . import views
+from board.views import base_views, question_views, answer_views, vote_views, comment_views
 
 app_name = 'board'  # 네임 스페이스(소속) - url경로 이름
 
 urlpatterns = [
     # 인덱스 페이지 - 127.0.0.1:8000/board/
-    path('', views.index, name='index'),
+    path('', base_views.index, name='index'),
     # 질문 목록 - 127.0.0.1:8000/board/boardlist
-    path('boardlist/', views.boardlist, name='boardlist'),
+    path('boardlist/', base_views.boardlist, name='boardlist'),
     # 상세 페이지 - 127.0.0.1:8000/board/1/
-    path('<int:question_id>/', views.detail, name='detail'),
+    path('<int:question_id>/', base_views.detail, name='detail'),
     # 질문 등록 - 127.0.0.1:8000/board/question/create/
-    path('question/create/', views.question_create, name='question_create'),
+    path('question/create/', question_views.question_create, name='question_create'),
     # 답변 등록 - 127.0.0.1:8000/board/answer/create/1/
-    path('answer/create/<int:question_id>/', views.answer_create, name='answer_create'),
+    path('answer/create/<int:question_id>/', answer_views.answer_create, name='answer_create'),
     # 질문 수정
-    path('question/modify/<int:question_id>/', views.question_modify, name='question_modify'),
+    path('question/modify/<int:question_id>/', question_views.question_modify, name='question_modify'),
     # 답변 수정
-    path('answer/modify/<int:answer_id>/', views.answer_modify, name='answer_modify'),
+    path('answer/modify/<int:answer_id>/', answer_views.answer_modify, name='answer_modify'),
     # 질문 삭제
-    path('question/delete/<int:question_id>', views.question_delete, name='question_delete'),
+    path('question/delete/<int:question_id>', question_views.question_delete, name='question_delete'),
     # 답변 삭제
-    path('answer/delete/<int:answer_id>', views.answer_delete, name='answer_delete'),
+    path('answer/delete/<int:answer_id>', answer_views.answer_delete, name='answer_delete'),
     # 질문 추천
-    path('vote/question/<int:question_id>/', views.vote_question, name='vote_question'),
+    path('vote/question/<int:question_id>/', vote_views.vote_question, name='vote_question'),
+    # 댓글 등록(질문)
+    path('comment/create/question/<int:question_id>', comment_views.comment_create_question, name='comment_create_question'),
 ]

@@ -22,3 +22,12 @@
     virtualenv venvs --python=python3.8 : 가상환경 venvs에 설치, 파이썬3.8 설치
     ls : 파일 목록
     . 파일이름 : 파일 실행
+
+static 파일(image, css, js)은 웹서버(리눅스)에서 관리
+    운영 서버에서 작동 : DEBUG = False
+    개발 서버에서 작동 : DEBUG = True
+template 파일은 WAS(장고)에서 관리
+
+get_object_or_404()
+    url 경로가 맞으면 페이지를 가져오고,
+    경로가 틀리면 페이지 없음(404 코드 출력) 처리가 되는 기능

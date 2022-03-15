@@ -60,6 +60,18 @@
                             -->
                         </div>
                         {% endif %}
+                        <hr>
+                        <div class="mt-3">
+                            {% for comment in question.comment_set.all %}
+                            <div class="text-muted">0
+                                <p>{{ comment.content }}</p>
+                                <span>- {{ comment.author }}, {{ comment.create_date }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            <a href="{% url 'board:comment_create_question' question.id %}">댓글 추가</a>
+                        </div>
                     </div>
                 </div>
             </div>
