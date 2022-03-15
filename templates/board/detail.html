@@ -63,7 +63,7 @@
                         <hr>
                         <div class="mt-3">
                             {% for comment in question.comment_set.all %}
-                            <div class="text-muted">0
+                            <div class="text-muted">
                                 <p>{{ comment.content }}</p>
                                 <span>- {{ comment.author }}, {{ comment.create_date }}</span>
                             </div>
