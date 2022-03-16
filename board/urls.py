@@ -24,6 +24,10 @@ urlpatterns = [
     path('answer/delete/<int:answer_id>', answer_views.answer_delete, name='answer_delete'),
     # 질문 추천
     path('vote/question/<int:question_id>/', vote_views.vote_question, name='vote_question'),
-    # 댓글 등록(질문)
-    path('comment/create/question/<int:question_id>', comment_views.comment_create_question, name='comment_create_question'),
+    # 질문 댓글 등록
+    path('comment/create/question/<int:question_id>/', comment_views.comment_create_question, name='comment_create_question'),
+    # 질문 댓글 삭제
+    path('comment/delete/question/<int:comment_id>/', comment_views.comment_delete_question, name='comment_delete_question'),
+    # 질문 댓글 수정
+    path('comment/modify/question/<int:comment_id>/', comment_views.comment_modify_question, name='comment_modify_question'),
 ]

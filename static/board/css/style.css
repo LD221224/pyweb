@@ -6,6 +6,9 @@
 .answer_form{height: 300px;}
 .comment_form{height: 300px;}
 
+/* board-detail-comment style */
+.comment{border-top: 1px dotted #ccc;}
+
 /* footer style */
 footer .menu{list-style: none;}
 footer .menu li{
