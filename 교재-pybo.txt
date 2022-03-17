@@ -22,6 +22,11 @@
     virtualenv venvs --python=python3.8 : 가상환경 venvs에 설치, 파이썬3.8 설치
     ls : 파일 목록
     . 파일이름 : 파일 실행
+    pwd 현재 위치(경로)
+    cd ~/ 루트경로(/home)
+    cd .. 상위 디렉터리 이동
+    rm 파일 또는 디렉터리 이름 : 디렉터리가 비어있을 때 삭제
+    rm -rf 디렉터리 : 디렉터리가 비어있지 않을 때 삭제
 
 static 파일(image, css, js)은 웹서버(리눅스)에서 관리
     운영 서버에서 작동 : DEBUG = False
