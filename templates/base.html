@@ -12,9 +12,11 @@
 <body>
 {% include 'navbar.html' %}
 <!-- 기본 파일 안에 삽입될 내용 start -->
+<div class="min-vh-100">
 {% block content %}
 <!-- 내용 -->
 {% endblock %}
+</div>
 <!-- 기본 파일 안에 삽입될 내용 end -->
 {% include 'footer.html' %}
 
