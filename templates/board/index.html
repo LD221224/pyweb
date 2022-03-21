@@ -69,7 +69,7 @@
 
 {% block script %}
 <script>
-    let picture = ["/static/board/images/bg0.jpg", "/static/board/images/bg1.jpg", "/static/board/images/bg2.jpg"];
+    let picture = ["/static/board/images/poll.jpg", "/static/board/images/question.jpg"];
     let pic_idx = 0;
 
     showPicture();  // 함수 호출
@@ -79,7 +79,7 @@
         img.src = picture[pic_idx];  // 0번 인덱스 이미지 저장
         pic_idx += 1;  // 1 증가
 
-        if(pic_idx == 3){
+        if(pic_idx == 2){
             pic_idx = 0;
         }
 

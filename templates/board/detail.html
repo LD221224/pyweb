@@ -9,18 +9,16 @@
         <!-- 질문 추천 오류 표시 -->
         {% if messages %}
             {% for message in messages %}
-            <div class="alert alert-danger my-3">
-                <ul>
-                    <li>{{ message.message }}</li>
-                </ul>
-            </div>
+            <ul class="list-group py-2">
+                <li class="list-group-item list-group-item-danger">{{ message.message }}</li>
+            </ul>
             {% endfor %}
         {% endif %}
         <h2 class="border-bottom py-2">{{ question.subject }}</h2>
         <div class="row">
             <!-- 질문 추천 영역 -->
             <div class="col-1">
-                <div class="bg-light text-center border p-3 font-weight-bolder">
+                <div class="bg-light text-center border p-3 my-3 font-weight-bolder">
                     {{ question.voter.count }}
                 </div>
                 <a href="#" data-uri="{% url 'board:vote_question' question.id %}"

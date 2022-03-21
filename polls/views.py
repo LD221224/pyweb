@@ -19,11 +19,10 @@ def index(request):
 def detail(request, pk):
     # 자료 1개 가져오기
     question = Question.objects.get(id=pk)
-    return render(
-        request,
-        'polls/detail.html',
-        {'question': question}
-    )
+    if request.user in question.voter.all():
+        return render(request, 'polls/result.html', {'question': question, 'msg': '이미 투표한 항목입니다. 결과 페이지로 이동합니다.'})
+    else:
+        return render(request, 'polls/detail.html', {'question': question})
 
 
 def vote(request, pk):
@@ -40,6 +39,7 @@ def vote(request, pk):
         else:
             # id로 db에서 검색
             sel_choice = question.choice_set.get(id=choice)
+            question.voter.add(request.user)
             # 1 증가
             sel_choice.votes += 1
             # 저장하기

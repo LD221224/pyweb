@@ -10,6 +10,7 @@ from board.models import Question, Answer
 
 # 유지보수에 유리하도록 views 패키지 추가 -> board/views/@_views.py 로 분리
 
+
 # 인덱스 페이지
 def index(request):
     question_list = Question.objects.order_by('-pk')[:3]  # 최근 3개의 Question

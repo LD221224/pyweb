@@ -19,3 +19,10 @@
         </section>
     </div>
 {% endblock %}
+{% block script %}
+<script>
+    if('{{ msg }}' != ''){
+        alert('{{ msg }}');
+    };
+</script>
+{% endblock %}
