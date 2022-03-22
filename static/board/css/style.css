@@ -1,13 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+*{font-family: 'Gowun Dodum', sans-serif;}
+
 /* board-detail-comment style */
 .comment{border-top: 1px dotted #ccc;}
 
 /* footer style */
 footer .menu{list-style: none;}
 footer .menu li{
-    display: inline-block; margin: 10px 0; padding: 0 10px;
-    border-right: 2px solid rgb(0, 0, 255);
+    display: inline-block;
 }
-footer .menu li:last-child{border: none;}
 footer .menu li a{text-decoration: none;}
 
 footer address p{

@@ -18,4 +18,6 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout_view'),
     # 회원 가입
     path('signup/', views.signup, name='signup'),
+    # 문의하기
+    path('send_email/', views.send_email, name='send_email'),
 ]

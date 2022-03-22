@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% block title %}
-    Welcome PyWeb!!
+    Welcome Pyweb!!
 {% endblock %}
 
 {% block content %}
 {% load static %}
 <div class="container my-3">
-    <div class="jumbotron">
-        <h1 class="display-4 text-primary font-weight-bold">Welcome PyWeb!!</h1>
-        <hr class="my-4">
-        <p>안녕하세요. Pyweb 사이트 입니다. 이 사이트는 <span class="text-success">질문/답변</span>, <span class="text-danger">설문조사</span> 게시판으로 구성되어있습니다.</p>
+    <div class="jumbotron bg-dark py-5">
+        <h1 class="display-4 text-warning font-weight-bold">Welcome Pyweb!!</h1>
+        <hr class="my-4 text-light">
+        <p class="text-light">안녕하세요. Pyweb 사이트 입니다. 이 사이트는 <span class="text-success">질문/답변</span>, <span class="text-danger">설문조사</span> 게시판으로 구성되어있습니다.</p>
         <a class="btn btn-outline-success mr-3" href="{% url 'board:boardlist' %}" role="button">질문/답변</a>
         <a class="btn btn-outline-danger" href="{% url 'polls:index' %}" role="button">설문조사</a>
     </div>
@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="col-6 px-5">
-           <h3>Question - 최근 질문</h3>
+           <h3>최근 질문</h3>
             {% for question in question_list %}
             <div class="card my-3">
                 <div class="card-body">
@@ -66,7 +66,7 @@
     </div>
 </div>
 {% endblock %}
-
+<!--
 {% block script %}
 <script>
     let picture = ["/static/board/images/poll.jpg", "/static/board/images/question.jpg"];
@@ -87,3 +87,4 @@
     };
 </script>
 {% endblock %}
+-->

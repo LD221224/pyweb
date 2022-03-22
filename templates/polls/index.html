@@ -6,8 +6,8 @@
 
 {% block content %}
     <div class="container my-3">
-        <h2 class="border-bottom py-2">설문조사 목록</h2>
-        <div class="list-group">
+        <h2 class="border-bottom py-3">설문조사 목록</h2>
+        <div class="list-group py-3">
             {% if question_list %}
                 {% for question in question_list %}
                     <a href="{% url 'polls:detail' question.id %}"

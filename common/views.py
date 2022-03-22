@@ -41,3 +41,7 @@ def signup(request):
         form = UserForm()
     context = {'form': form}
     return render(request, 'common/signup.html', context)
+
+
+def send_email(request):
+    return render(request, 'common/send_email.html')

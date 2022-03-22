@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Email 문의하기
+{% endblock %}
+
+{% block content %}
+    <div class="container my-3">
+        <h2 class="border-bottom py-3">Email 문의하기</h2>
+        <form id="contact-form">
+            <input type="hidden" name="contact_number">
+            <label for="user_name" class="form-label pt-2">ID</label>
+            <input type="text" name="user_name" class="form-control" id="user_name" readonly value="{{ user.username }}">
+            <label for="user_email" class="form-label pt-4">Email</label>
+            <input type="email" name="user_email" class="form-control" id="user_email" readonly value="{{ user.email }}">
+            <label for="message" class="form-label pt-4">내용</label>
+            <textarea name="message" class="form-control" id="message" style="height: 150px" required></textarea>
+            <input type="submit" value="문의하기" class="btn btn-primary mt-3">
+        </form>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function() {
+    emailjs.init("user_ddqF7lvvwABbmTBCM7aHR");
+    })();
+</script>
+{% endblock %}
